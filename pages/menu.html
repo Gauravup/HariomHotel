@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu | HariOM Hotel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/menu.css" />
+</head>
+<body class="dark-theme">
+
+  <div id="page-loader"><div class="loader-content"><div class="loader-logo">HariOM</div><div class="loader-bar"><div class="loader-fill"></div></div></div></div>
+  <div id="scroll-progress"></div>
+
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo"><span class="logo-icon"><i class="fas fa-utensils"></i></span><span class="logo-text">HariOM <span class="logo-accent">Hotel</span></span></a>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="menu.html" class="nav-link active">Menu</a></li>
+        <li><a href="order.html" class="nav-link">Order</a></li>
+        <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+        <a href="cart.html" class="cart-btn" id="cart-btn"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cart-badge">0</span></a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+
+  <section class="page-hero" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80')">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content" data-aos="fade-up">
+      <h1>Our <span class="accent">Menu</span></h1>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><span>Menu</span></div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="menu-section section-padding">
+    <div class="container">
+      <!-- Search & Filter -->
+      <div class="menu-controls" data-aos="fade-up">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="menu-search" placeholder="Search dishes..." />
+        </div>
+        <div class="category-tabs" id="category-tabs">
+          <button class="cat-btn active" data-cat="all">All</button>
+          <button class="cat-btn" data-cat="breakfast"><i class="fas fa-sun"></i> Breakfast</button>
+          <button class="cat-btn" data-cat="lunch"><i class="fas fa-cloud-sun"></i> Lunch</button>
+          <button class="cat-btn" data-cat="dinner"><i class="fas fa-moon"></i> Dinner</button>
+          <button class="cat-btn" data-cat="beverages"><i class="fas fa-glass-water"></i> Beverages</button>
+          <button class="cat-btn" data-cat="desserts"><i class="fas fa-ice-cream"></i> Desserts</button>
+          <button class="cat-btn" data-cat="special"><i class="fas fa-star"></i> Special</button>
+        </div>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="menu-grid" id="menu-grid" data-aos="fade-up" data-aos-delay="200">
+        <!-- Populated by JS -->
+      </div>
+      <div class="no-results" id="no-results" style="display:none">
+        <i class="fas fa-search"></i>
+        <h3>No dishes found</h3>
+        <p>Try a different search term or category</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Preview Modal -->
+  <div class="modal" id="preview-modal">
+    <div class="modal-content preview-modal-content">
+      <button class="modal-close" id="preview-close"><i class="fas fa-times"></i></button>
+      <div class="preview-grid">
+        <div class="preview-img"><img src="" alt="" id="preview-img" /></div>
+        <div class="preview-info">
+          <span class="preview-badge" id="preview-badge"></span>
+          <h2 id="preview-name"></h2>
+          <div class="preview-rating" id="preview-rating"></div>
+          <p id="preview-desc"></p>
+          <div class="preview-price" id="preview-price"></div>
+          <div class="preview-qty">
+            <button class="qty-btn" id="preview-minus"><i class="fas fa-minus"></i></button>
+            <span id="preview-qty">1</span>
+            <button class="qty-btn" id="preview-plus"><i class="fas fa-plus"></i></button>
+          </div>
+          <button class="btn btn-primary btn-full" id="preview-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-top"><div class="container"><div class="footer-grid">
+      <div class="footer-brand"><a href="../index.html" class="footer-logo"><i class="fas fa-utensils"></i> HariOM <span class="accent">Hotel</span></a><p>Experience the finest dining with a blend of tradition and luxury.</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
+      <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="../index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="menu.html">Menu</a></li><li><a href="order.html">Order</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-hours"><h4>Opening Hours</h4><ul><li><span>Mon-Fri</span><span>7AM-11PM</span></li><li><span>Sat</span><span>7AM-12AM</span></li><li><span>Sun</span><span>8AM-11PM</span></li></ul></div>
+      <div class="footer-contact"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i>+91 98765 43210</li><li><i class="fas fa-envelope"></i>info@hariomhotel.com</li></ul></div>
+    </div></div></div>
+    <div class="footer-bottom"><div class="container"><p>&copy; 2025 HariOM Hotel. All Rights Reserved.</p></div></div>
+  </footer>
+
+  <a href="https://wa.me/919876543210" class="whatsapp-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+  <button class="back-to-top" id="back-to-top"><i class="fas fa-chevron-up"></i></button>
+  <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toast-msg">Done!</span></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/menu.js"></script>
+</body>
+</html>

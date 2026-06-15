@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Online | HariOM Hotel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/menu.css" />
+  <link rel="stylesheet" href="../css/order.css" />
+</head>
+<body class="dark-theme">
+  <div id="page-loader"><div class="loader-content"><div class="loader-logo">HariOM</div><div class="loader-bar"><div class="loader-fill"></div></div></div></div>
+  <div id="scroll-progress"></div>
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo"><span class="logo-icon"><i class="fas fa-utensils"></i></span><span class="logo-text">HariOM <span class="logo-accent">Hotel</span></span></a>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="menu.html" class="nav-link">Menu</a></li>
+        <li><a href="order.html" class="nav-link active">Order</a></li>
+        <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+        <a href="cart.html" class="cart-btn" id="cart-btn"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cart-badge">0</span></a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+
+  <section class="page-hero" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80')">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content" data-aos="fade-up">
+      <h1>Order <span class="accent">Online</span></h1>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><span>Order</span></div>
+    </div>
+  </section>
+
+  <section class="order-section section-padding">
+    <div class="container">
+      <div class="order-layout">
+        <!-- Left: Menu -->
+        <div class="order-menu">
+          <div class="menu-controls" data-aos="fade-up">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" id="menu-search" placeholder="Search dishes..." />
+            </div>
+            <div class="category-tabs" id="category-tabs">
+              <button class="cat-btn active" data-cat="all">All</button>
+              <button class="cat-btn" data-cat="breakfast">Breakfast</button>
+              <button class="cat-btn" data-cat="lunch">Lunch</button>
+              <button class="cat-btn" data-cat="dinner">Dinner</button>
+              <button class="cat-btn" data-cat="beverages">Beverages</button>
+              <button class="cat-btn" data-cat="desserts">Desserts</button>
+              <button class="cat-btn" data-cat="special">Special</button>
+            </div>
+          </div>
+          <div class="menu-grid" id="menu-grid" data-aos="fade-up" data-aos-delay="200"></div>
+          <div class="no-results" id="no-results" style="display:none"><i class="fas fa-search"></i><h3>No dishes found</h3></div>
+        </div>
+
+        <!-- Right: Order Summary -->
+        <div class="order-summary" id="order-summary" data-aos="fade-left">
+          <div class="summary-header">
+            <h3><i class="fas fa-receipt"></i> Your Order</h3>
+            <span class="item-count" id="order-item-count">0 items</span>
+          </div>
+          <div class="summary-items" id="summary-items">
+            <div class="empty-order">
+              <i class="fas fa-shopping-bag"></i>
+              <p>Your order is empty</p>
+              <span>Add items from the menu</span>
+            </div>
+          </div>
+          <div class="summary-totals" id="summary-totals" style="display:none">
+            <div class="total-row"><span>Subtotal</span><span id="order-subtotal">&#8377;0</span></div>
+            <div class="total-row"><span>Tax (5%)</span><span id="order-tax">&#8377;0</span></div>
+            <div class="total-row"><span>Delivery</span><span class="text-green">FREE</span></div>
+            <div class="total-row grand"><span>Grand Total</span><span id="order-grand">&#8377;0</span></div>
+          </div>
+          <div class="coupon-box" id="coupon-box" style="display:none">
+            <input type="text" id="coupon-input" placeholder="Enter coupon code" />
+            <button id="apply-coupon" class="btn btn-outline">Apply</button>
+          </div>
+          <a href="cart.html" class="btn btn-primary btn-full order-checkout-btn" id="order-checkout-btn" style="display:none">
+            <i class="fas fa-arrow-right"></i> Proceed to Checkout
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Preview Modal (reused) -->
+  <div class="modal" id="preview-modal">
+    <div class="modal-content preview-modal-content">
+      <button class="modal-close" id="preview-close"><i class="fas fa-times"></i></button>
+      <div class="preview-grid">
+        <div class="preview-img"><img src="" alt="" id="preview-img" /></div>
+        <div class="preview-info">
+          <span class="preview-badge" id="preview-badge"></span>
+          <h2 id="preview-name"></h2>
+          <div class="preview-rating" id="preview-rating"></div>
+          <p id="preview-desc"></p>
+          <div class="preview-price" id="preview-price"></div>
+          <div class="preview-qty">
+            <button class="qty-btn" id="preview-minus"><i class="fas fa-minus"></i></button>
+            <span id="preview-qty">1</span>
+            <button class="qty-btn" id="preview-plus"><i class="fas fa-plus"></i></button>
+          </div>
+          <button class="btn btn-primary btn-full" id="preview-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom"><div class="container"><p>&copy; 2025 HariOM Hotel. All Rights Reserved.</p></div></div>
+  </footer>
+
+  <a href="https://wa.me/919876543210" class="whatsapp-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+  <button class="back-to-top" id="back-to-top"><i class="fas fa-chevron-up"></i></button>
+  <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toast-msg">Done!</span></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/menu.js"></script>
+  <script src="../js/order.js"></script>
+</body>
+</html>
